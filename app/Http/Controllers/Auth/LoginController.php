@@ -1,9 +1,11 @@
 <?php
 
-namespace CodeFin\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use CodeFin\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,29 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * {@inheritdoc} And check if user has 'admin' role.
+     */
+    protected function credentials(Request $request)
+    {
+        $data = $request->only($this->username(), 'password');
+        $data['role'] = User::ROLE_ADMIN;
+        return $data;
+    }
+
+    /**
+     * {@inheritdoc} And redirects user to login page.
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/admin/login');
     }
 }

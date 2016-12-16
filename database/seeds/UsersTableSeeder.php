@@ -14,7 +14,13 @@ class UsersTableSeeder extends Seeder
         factory(\CodeFin\User::class,1)
             ->states('admin')
             ->create([
+                'name' => 'Admin',
                 'email' => 'admin@user.com'
-        ]);
+            ]);
+        factory(\CodeFin\User::class,1)
+            ->create([
+                'name' => 'Client',
+                'email' => 'client@user.com'
+            ]);
     }
 }
