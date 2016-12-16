@@ -18,6 +18,12 @@ $factory->define(CodeFin\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'remember_token' => str_random(10)
+    ];
+});
+
+$factory->state(\CodeFin\User::class, 'admin', function (Faker\Generator $faker) {
+    return [
+        'role' => \CodeFin\User::ROLE_ADMIN
     ];
 });
