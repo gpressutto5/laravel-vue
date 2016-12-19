@@ -1,1 +1,0 @@
-{"virtualbox":{"/home/vagrant/financeiro":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/financeiro","hostpath":"C:/Users/guilherme.ferruzzi/PhpstormProjects/financeiro","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/guilherme.ferruzzi/PhpstormProjects/financeiro","disabled":false,"__vagrantfile":true}}}
