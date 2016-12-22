@@ -5,13 +5,19 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "materialize-css": "^0.97.8",
+    "axios": "^0.15.3",
+    "babel": "^6.5.2",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
     "gulp": "^3.9.1",
     "laravel-elixir": "^6.0.0-9",
+    "laravel-elixir-browsersync-official": "^1.0.0",
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",
+    "materialize-css": "^0.97.8",
     "vue": "^2.0.1",
-    "axios": "^0.15.3",
-    "vue-router": "^2.1.1"
+    "vue-router": "^2.1.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }
