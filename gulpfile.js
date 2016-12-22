@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig  = require('./webpack.config');
 const webpackDevConfig  = require('./webpack.dev.config');
+const mergeWebpack = require('webpack-merge');
 
 require('laravel-elixir-vue-2');
 require('laravel-elixir-webpack-official');
@@ -25,8 +26,14 @@ Elixir.webpack.mergeConfig(webpackDevConfig);
  */
 
 gulp.task('webpack-dev-server', () => {
-    let config = Elixir.webpack.config;
+    let config = mergeWebpack(webpackConfig, webpackDevConfig);
+    let inlineHot = [
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://127.0.0.1:8080'
+    ];
+    config.entry.admin = [config.entry.admin].concat(inlineHot);
     new WebpackDevServer(webpack(config), {
+        hot: true,
         proxy: {
             '*': 'http://127.0.0.1:8000'
         },
@@ -45,7 +52,6 @@ gulp.task('webpack-dev-server', () => {
 elixir(mix => {
     mix.sass('./resources/assets/admin/sass/admin.scss')
         .copy('./node_modules/materialize-css/fonts/roboto', './public/fonts/roboto');
-       //.webpack('admin.js');
     gulp.start('webpack-dev-server');
     mix.browserSync({
         proxy: 'http://127.0.0.1:8080'
