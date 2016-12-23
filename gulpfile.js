@@ -1,16 +1,18 @@
 const gulp = require('gulp');
 const elixir = require('laravel-elixir');
+require('laravel-elixir-webpack-official');
+require('laravel-elixir-vue-2');
+
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+
 const webpackConfig  = require('./webpack.config');
 const webpackDevConfig  = require('./webpack.dev.config');
+
 const mergeWebpack = require('webpack-merge');
 
-require('laravel-elixir-vue-2');
-require('laravel-elixir-webpack-official');
 
 Elixir.webpack.config.module.loaders = [];
-
 Elixir.webpack.mergeConfig(webpackConfig);
 Elixir.webpack.mergeConfig(webpackDevConfig);
 
@@ -55,6 +57,22 @@ elixir(mix => {
     gulp.start('webpack-dev-server');
     mix.browserSync({
         proxy: 'http://192.168.10.10:8080',
-        open: false
+        open: false,
+        notify: {
+            styles: {
+                top: 'auto',
+                bottom: '0',
+                margin: '0px',
+                padding: '10px',
+                position: 'fixed',
+                fontSize: '20px',
+                zIndex: '9999',
+                borderRadius: '5px 0px 0px',
+                color: 'black',
+                textAlign: 'center',
+                display: 'block',
+                backgroundColor: 'rgba(60, 197, 31, 0.498039)'
+            }
+        }
     });
 });

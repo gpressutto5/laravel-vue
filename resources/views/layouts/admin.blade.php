@@ -83,6 +83,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('/dist/admin.bundle.js') }}"></script>
+    <script src="{{ asset('build/admin.bundle.js') }}"></script>
 </body>
 </html>

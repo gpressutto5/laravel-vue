@@ -7,12 +7,12 @@ module.exports = {
     output: {
         path: __dirname + '/public/build',
         filename: '[name].bundle.js',
-        publicPath: '/dist/'
+        publicPath: '/build/'
     },
     plugins: [
         new webpack.ProvidePlugin({
             'window.$': 'jquery',
-            'windows.jQuery': 'jquery'
+            'window.jQuery': 'jquery'
         })
     ],
     module: {
@@ -28,4 +28,9 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.common.js'
+        }
+    }
 };
