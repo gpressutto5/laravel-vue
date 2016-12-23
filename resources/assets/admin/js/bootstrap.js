@@ -1,14 +1,4 @@
-
-window._ = require('lodash');
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-window.$ = window.jQuery = require('jquery');
-//require('bootstrap-sass');
+require('materialize-css');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -17,6 +7,7 @@ window.$ = window.jQuery = require('jquery');
  */
 
 window.Vue = require('vue');
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

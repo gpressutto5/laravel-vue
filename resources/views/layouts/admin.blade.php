@@ -22,7 +22,21 @@
 </head>
 <body>
     <div id="app">
-        <example></example>
+        @if(Auth::check())
+            <?php
+                $menuConfig = [
+                    'name' => Auth::user()->name,
+                    'menus' => [
+            ["nome" => "Dashboard",          "url" => "/dashboard", "icon" => "dashboard"],
+            ["nome" => "Contas a pagar",     "url" => "/pagar",     "icon" => "money_off"],
+            ["nome" => "Contas a receber",   "url" => "/receber",   "icon" => "attach_money"]
+                    ],
+                    'urlLogout' => '/admin/logout',
+                    'csrf' => csrf_token()
+                ];
+            ?>
+            <admin-menu :config="{{ json_encode($menuConfig) }}"></admin-menu>
+        @endif
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
