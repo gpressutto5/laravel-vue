@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="navbar">
-            <nav class="light-blue">
+            <nav>
                 <div class="nav-wrapper">
                     <div class="container">
                         <a href="/" class="brand-logo">Contas</a>
